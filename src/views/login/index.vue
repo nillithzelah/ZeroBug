@@ -61,7 +61,7 @@
   });
 
   const welcomeTitle = computed(() => {
-    return isWubugDomain.value ? '欢迎使用武霸哥' : '欢迎使用橙果宜牛';
+    return isWubugDomain.value ? '欢迎使用武霸哥' : '欢迎使用武霸哥';
   });
 
   const welcomeSubtitle = computed(() => {
@@ -90,7 +90,7 @@
 
   const goToGameLogin = () => {
     const currentDomain = window.location.hostname;
-    const gameUrl = currentDomain.includes('wubug') ? '/games/?from=wubug' : 'https://m.game985.vip/';
+    const gameUrl = currentDomain.includes('wubug') ? '/games/?from=wubug' : 'https://www.wubug.cc/games/';
     window.open(gameUrl, '_blank');
   };
 
