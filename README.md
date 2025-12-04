@@ -1,4 +1,4 @@
-# 🍊 橙果宜牛 (ChengGuoYiNiu)
+# 🐯 武霸哥 (WuBaGe)
 
 一个现代化的Vue 3 + TypeScript全栈应用，提供广告投放管理、用户管理和游戏管理功能。
 
@@ -58,7 +58,7 @@
 ## 📁 项目结构
 
 ```
-chengguo/
+wubug/
 ├── src/                    # 前端源码
 │   ├── api/               # API接口
 │   ├── components/        # 公共组件
@@ -85,8 +85,8 @@ chengguo/
 ### 安装依赖
 ```bash
 # 克隆项目
-git clone https://github.com/nillithzelah/chengguo.git
-cd chengguo
+git clone https://github.com/nillithzelah/ZeroBug.git
+cd zerobug
 
 # 安装依赖
 npm install
@@ -217,10 +217,10 @@ npm run db:init
 
 ## 👨‍💻 作者
 
-**橙果宜牛团队**
+**武霸哥团队**
 
-- 项目地址: https://github.com/nillithzelah/chengguo
-- 演示地址: https://ecpm.game985.vip
+- 项目地址: https://github.com/nillithzelah/ZeroBug
+- 演示地址: https://www.wubug.cc
 
 ## 🙏 致谢
 

@@ -1,9 +1,9 @@
 {
-  "name": "cheng-guo-yi-niu",
-  "description": "橙果宜牛 Vue应用",
+  "name": "wu-ba-ge",
+  "description": "武霸哥 Vue应用",
   "version": "1.0.0",
   "private": true,
-  "author": "橙果宜牛团队",
+  "author": "武霸哥团队",
   "license": "MIT",
   "scripts": {
     "dev": "vite --config ./config/vite.config.dev.ts",
