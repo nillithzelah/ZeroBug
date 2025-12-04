@@ -583,13 +583,7 @@
             try {
                 const response = await fetch('games.json');
                 const data = await response.json();
-                allGames = data.games.filter(game => game.enabled !== false).map(game => ({
-                    ...game,
-                    // 游戏预览图片：优先使用games目录下的图片
-                    preview: `images/games/game-${game.id || game.name.toLowerCase().replace(/\s+/g, '-')}.jpg`,
-                    // 保持原有逻辑作为fallback
-                    originalPreview: game.preview
-                }));
+                allGames = data.games.filter(game => game.enabled !== false);
                 categories = data.categories || ['全部'];
                 games = [...allGames];
                 renderCategories();
@@ -598,9 +592,9 @@
                 console.error('加载游戏数据失败:', error);
                 // 如果加载失败，使用默认数据
                 games = [
-                    { name: '游戏1', preview: 'images/games/game-1.jpg', originalPreview: 'https://via.placeholder.com/300x150?text=游戏1', url: 'games/game1/index.html' },
-                    { name: '游戏2', preview: 'images/games/game-2.jpg', originalPreview: 'https://via.placeholder.com/300x150?text=游戏2', url: 'games/game2/index.html' },
-                    { name: '游戏3', preview: 'images/games/game-3.jpg', originalPreview: 'https://via.placeholder.com/300x150?text=游戏3', url: 'games/game3/index.html' },
+                    { name: '游戏1', preview: 'images/游戏1.png', originalPreview: 'https://via.placeholder.com/300x150?text=游戏1', url: 'games/game1/index.html', category: '益智' },
+                    { name: '游戏2', preview: 'images/游戏2.png', originalPreview: 'https://via.placeholder.com/300x150?text=游戏2', url: 'games/game2/index.html', category: '益智' },
+                    { name: '游戏3', preview: 'images/游戏3.png', originalPreview: 'https://via.placeholder.com/300x150?text=游戏3', url: 'games/game3/index.html', category: '益智' },
                 ];
                 categories = ['全部'];
                 renderCategories();
