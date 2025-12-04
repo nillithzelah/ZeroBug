@@ -2601,7 +2601,7 @@ app.get('/api/entity/list', authenticateJWT, async (req, res) => {
 app.post('/api/entity/assign-game', authenticateJWT, async (req, res) => {
   try {
     const currentUser = req.user;
-    const { entity_id, game_name, programmer, development_status } = req.body;
+    const { entity_id, game_name, programmer, manager, development_status } = req.body;
 
     // 检查权限：管理员和程序员可以分配游戏给主体
     const mappedRole = getMappedRole(currentUser.role);
@@ -2688,6 +2688,7 @@ app.post('/api/entity/assign-game', authenticateJWT, async (req, res) => {
     const resultEntity = await Entity.create({
       name: entity.name,
       programmer: programmer || '',
+      manager: manager || '',
       account_name: entity.account_name || '', // 从原主体复制账号名
       game_name: game_name,
       development_status: development_status || '',
