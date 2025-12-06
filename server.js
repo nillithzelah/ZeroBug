@@ -2528,6 +2528,40 @@ app.get('/api/entity/list', authenticateJWT, async (req, res) => {
     // 构建查询条件
     const whereCondition = {};
 
+    // 如果是内部老板角色，只显示分配给内部老板的主体数据
+    if (mappedRole === 'internal_boss') {
+      // 查询分配给内部老板的主体（通过关联查询）
+      const internalBossEntities = await Entity.findAll({
+        include: [{
+          model: User,
+          as: 'assignedUser',
+          where: { role: 'internal_boss' },
+          required: true,
+          attributes: []
+        }],
+        attributes: ['id']
+      });
+
+      const internalBossEntityIds = internalBossEntities.map(entity => entity.id);
+      if (internalBossEntityIds.length > 0) {
+        whereCondition.id = {
+          [sequelize.Sequelize.Op.in]: internalBossEntityIds
+        };
+      } else {
+        // 如果没有分配给内部老板的主体，返回空结果
+        return res.json({
+          code: 20000,
+          data: {
+            entities: [],
+            total: 0
+          },
+          message: '获取主体列表成功'
+        });
+      }
+
+      logger.info(`👑 [内部老板筛选] 内部老板 ${currentUser.name || currentUser.username} 只查看分配给内部老板的主体数据，找到 ${internalBossEntityIds.length} 条记录`);
+    }
+
     // 如果是程序员角色，添加程序员筛选条件
     if (mappedRole === 'programmer') {
       const programmerFilter = req.query.programmer_filter;

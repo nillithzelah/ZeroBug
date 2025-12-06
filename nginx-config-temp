@@ -78,9 +78,9 @@ server {
     listen 443 ssl http2;
     server_name _ www.wubug.cc;
 
-    # SSL证书配置
-    ssl_certificate /etc/ssl/certs/selfsigned.crt;
-    ssl_certificate_key /etc/ssl/private/selfsigned.key;
+    # SSL证书配置 (Let's Encrypt)
+    ssl_certificate /etc/letsencrypt/live/www.wubug.cc/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.wubug.cc/privkey.pem;
 
     # SSL安全配置
     ssl_protocols TLSv1.2 TLSv1.3;

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "========================================"
-echo "   Douyin Admin 前端部署脚本"
+echo "   Douyin Admin 新服务器前端部署脚本"
 echo "========================================"
 
 # 检查是否在项目根目录
@@ -36,11 +36,11 @@ if [ ! -d "dist" ]; then
 fi
 
 echo ""
-echo "[4/4] 上传前端文件到服务器..."
+echo "[4/4] 上传前端文件到新服务器..."
 echo "正在上传 dist 目录到 /var/www/html..."
 
-# 使用SCP上传整个dist目录
-scp -i ~/.ssh/id_rsa_douyin -r dist/* root@47.115.94.203:/var/www/html/
+# 使用SCP上传整个dist目录到新服务器
+scp -i ~/.ssh/id_rsa_new_server -r dist/* root@112.74.163.102:/var/www/html/
 
 if [ $? -ne 0 ]; then
     echo "❌ 上传失败，请检查网络连接和SSH配置"
@@ -55,12 +55,14 @@ echo ""
 echo "✅ 构建成功"
 echo "✅ 文件上传成功"
 echo ""
-echo "🌐 访问地址: http://你的域名或IP"
+echo "🌐 访问地址: http://112.74.163.102"
 echo ""
 echo "如果需要重启Web服务器，请在服务器上执行："
-echo "sudo systemctl restart nginx  # 或 apache2"
+echo "sudo systemctl reload nginx"
 echo ""
 echo "📋 部署摘要："
 echo "- 构建时间: $(date)"
 echo "- 上传文件数: $(find dist -type f | wc -l)"
+echo "- 目标服务器: 112.74.163.102"
+echo "- SSH密钥: ~/.ssh/id_rsa_new_server"
 echo "- 目标目录: /var/www/html/"

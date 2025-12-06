@@ -4,7 +4,7 @@
       "title": "小游戏展示",
       "logo": {
         "type": "image",
-        "src": "images/top/top-image.jpg",
+        "src": "images/top/wubug.png",
         "alt": "顶部横幅"
       },
       "backButton": {

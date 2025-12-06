@@ -242,14 +242,6 @@
       "enabled": true
     },
     {
-      "id": "topimage",
-      "name": "top-image",
-      "preview": "images/top-image.jpg",
-      "url": "games/topimage/index.html",
-      "category": "益智",
-      "enabled": true
-    },
-    {
       "id": "梦幻城堡保卫战",
       "name": "梦幻城堡保卫战",
       "preview": "images/梦幻城堡保卫战.png",

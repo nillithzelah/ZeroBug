@@ -1,6 +1,6 @@
 @ECHO OFF
 ECHO ========================================
-ECHO    Douyin Admin 前端部署脚本
+ECHO    Douyin Admin 新服务器前端部署脚本
 ECHO ========================================
 
 ECHO.
@@ -31,11 +31,11 @@ IF NOT EXIST dist (
 )
 
 ECHO.
-ECHO [4/4] 上传前端文件到服务器...
+ECHO [4/4] 上传前端文件到新服务器...
 ECHO 正在上传 dist 目录到 /var/www/html...
 
-REM 使用SCP上传整个dist目录
-scp -i %USERPROFILE%\.ssh\id_rsa_douyin -r dist/* root@47.115.94.203:/var/www/html/
+REM 使用SCP上传整个dist目录到新服务器
+scp -i %USERPROFILE%\.ssh\id_rsa_new_server -r dist/* root@112.74.163.102:/var/www/html/
 
 IF %ERRORLEVEL% NEQ 0 (
     ECHO ❌ 上传失败，请检查网络连接和SSH配置
@@ -51,9 +51,14 @@ ECHO.
 ECHO ✅ 构建成功
 ECHO ✅ 文件上传成功
 ECHO.
-ECHO 🌐 访问地址: http://你的域名或IP
+ECHO 🌐 访问地址: http://112.74.163.102
 ECHO.
 ECHO 如果需要重启Web服务器，请在服务器上执行：
-ECHO sudo systemctl restart nginx  # 或 apache2
+ECHO sudo systemctl reload nginx
+ECHO.
+ECHO 📋 部署信息：
+ECHO - 目标服务器: 112.74.163.102
+ECHO - SSH密钥: %USERPROFILE%\.ssh\id_rsa_new_server
+ECHO - 部署目录: /var/www/html/
 ECHO.
 PAUSE
